@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울거래 비상장</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="홈 링크">
+                <img src="https://www.ustockplus.com/logo/logo-horizontal.svg" alt="서울거래 로고" width="154" height="28">
+            </a><div class="menu-toggle" id="menu-toggle">
+                <span class="hamburger"></span>
+            </div>
+            <div class="auth-container" id="auth-container">
+                <span id="greeting" class="hidden"style="display: block;">환영합니다, ooo님!</span>
+                <span id="balance">안전하게 로딩 중입니다.</span>
+                <div class="button-container">
+                    <button id="login-btn" style="display: none;">로그인</button>
+                    <button id="signup-btn" style="display: none;">회원가입</button>
+                    <button id="owned-btn" class="hidden" style="display: block;">보유 종목</button> <!-- 보유 종목 버튼 -->
+                    <button id="logout" class="hidden" style="display: block;">로그아웃</button> <!-- 로그아웃 버튼 -->
+                </div>
+        </div>
+    </header>
+    
+
+    <section class="ipo-ranking">
+      <h2 class="ranking-title">
+        종목 순위 <time id="ranking-time"></time>
+      </h2>
+      <script>
+        function updateKoreanTime() {
+          const now = new Date();
+      
+          // 대한민국 시간 (KST) 기준으로 변환
+          const kstOffset = 9 * 60; // 9시간을 분으로
+          const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+          const kstDate = new Date(utc + (kstOffset * 60000));
+      
+          // 날짜 포맷: 25.05.27 15:50
+          const year = String(kstDate.getFullYear()).slice(2);
+          const month = String(kstDate.getMonth() + 1).padStart(2, '0');
+          const day = String(kstDate.getDate()).padStart(2, '0');
+          const hours = String(kstDate.getHours()).padStart(2, '0');
+          const minutes = String(kstDate.getMinutes()).padStart(2, '0');
+      
+          const timeElement = document.getElementById('ranking-time');
+          timeElement.setAttribute('datetime', kstDate.toISOString());
+          timeElement.textContent = `${year}.${month}.${day} ${hours}:${minutes} 기준`;
+        }
+      
+        // 초기 실행
+        updateKoreanTime();
+      
+        // 매 1분마다 업데이트
+        setInterval(updateKoreanTime, 60 * 1000);
+      </script>
+        <div id="rankings-table">
+          <div class="ranking-header">
+            <span>#</span>
+            <span>종목명</span>
+            <span>체결평균가</span>
+            <span>등락률</span>
+          </div>
+      
+          
+            <!-- ① 두나무 -->
+            <div class="ranking-item">
+              <span class="rank">1</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/admin/2023-01/2d2f17bd-097c-4011-931f-6c73c7b7b694.png" alt="두나무 로고" class="ranking-stock-logo" />
+                <strong>두나무</strong>
+              </div>
+              <span>258,000원</span>
+              <span class="rate price-up">+7.95%</span>
+            </div>
+          
+            <!-- ② 빗썸 -->
+            <div class="ranking-item">
+              <span class="rank">2</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/logo/stock/341650.png" alt="빗썸 로고" class="ranking-stock-logo" />
+                <strong>빗썸</strong>
+              </div>
+              <span>275,000원</span>
+              <span class="rate price-up">+23.87%</span>
+            </div>
+          
+            <!-- ③ 야놀자 -->
+            <div class="ranking-item">
+              <span class="rank">3</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/admin/2025-05/a7e5b7ed-4b35-4a76-ab0d-1599271e9696.png" alt="야놀자 로고" class="ranking-stock-logo" />
+                <strong>야놀자</strong>
+              </div>
+              <span>32,500원</span>
+              <span class="rate price-down">‑6.88%</span>
+            </div>
+          
+            <!-- ④ 케이뱅크 -->
+            <div class="ranking-item">
+              <span class="rank">4</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/logo/stock/279570.png" alt="케이뱅크 로고" class="ranking-stock-logo" />
+                <strong>케이뱅크</strong>
+              </div>
+              <span>9,050원</span>
+              <span class="rate price-neutral">0%</span>
+            </div>
+          
+            <!-- ⑤ 지투지바이오 -->
+            <div class="ranking-item">
+              <span class="rank">5</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/logo/company/70953.png" alt="지투지바이오 로고" class="ranking-stock-logo" />
+                <strong>지투지바이오</strong>
+              </div>
+              <span>미제공</span>
+              <span class="rate">미제공</span>
+            </div>
+          
+            <!-- ⑥ 에스아이플렉스 -->
+            <div class="ranking-item">
+              <span class="rank">6</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/admin/2023-02/8a477df1-6352-4347-8d88-30eb900a0e4f.png" alt="에스아이플렉스 로고" class="ranking-stock-logo" />
+                <strong>에스아이플렉스</strong>
+              </div>
+              <span>미제공</span>
+              <span class="rate">미제공</span>
+            </div>
+          
+            <!-- ⑦ 제네톡스 -->
+            <div class="ranking-item">
+              <span class="rank">7</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/admin/2023-02/44db9484-7c51-4b99-9444-73a663999fd0.png" alt="제네톡스 로고" class="ranking-stock-logo" />
+                <strong>제네톡스</strong>
+              </div>
+              <span>미제공</span>
+              <span class="rate">미제공</span>
+            </div>
+          
+            <!-- ⑧ 비바리퍼블리카 -->
+            <div class="ranking-item">
+              <span class="rank">8</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/admin/2022-09/2075df61-33e0-4ecc-ba42-b95ebf15705a.png" alt="비바리퍼블리카 로고" class="ranking-stock-logo" />
+                <strong>비바리퍼블리카</strong>
+              </div>
+              <span>미제공</span>
+              <span class="rate">미제공</span>
+            </div>
+          
+            <!-- ⑨ 컬리 -->
+            <div class="ranking-item">
+              <span class="rank">9</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/logo/stock/408480.png" alt="컬리 로고" class="ranking-stock-logo" />
+                <strong>컬리</strong>
+              </div>
+              <span>16,100원</span>
+              <span class="rate price-up">+5.92%</span>
+            </div>
+          
+            <!-- ⑩ 아우토크립트 -->
+            <div class="ranking-item">
+              <span class="rank">10</span>
+              <div class="stock-info">
+                <img src="https://static.ustockplus.com/logo/company/621.png" alt="아우토크립트 로고" class="ranking-stock-logo" />
+                <strong>아우토크립트</strong>
+              </div>
+              <span>미제공</span>
+              <span class="rate">미제공</span>
+            </div>
+          </div>
+          
+
+      </main>
+      
+      <section class="ipo-calendar">
+        <h3>다가오는 청약 종목</h3>
+      
+        <!-- 상태 탭 -->
+        <div class="ipo-status-tabs">
+          <div class="status" data-status="진행중">진행중</div>
+          <div class="status active" data-status="청약예정">청약예정</div> <!-- ✅ 여기에 active -->
+          <div class="status" data-status="상장예정">상장예정</div>
+        </div>
+      
+        <!-- 슬라이더 -->
+        <div class="ipo-slider-wrapper swiper">
+          <div class="swiper-wrapper">
+            <!-- 슬라이드 템플릿 -->
+            <!-- JavaScript로 동적으로 렌더링 -->
+          </div>
+      
+          <!-- 네비게이션 버튼 -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </section>
+      
+      <section class="ipo-news">
+        <h3 class="ipo-news-title">주요 뉴스</h3>
+        <div class="NewsList_article__8cxIW">
+          <ul class="list">
+      
+            <li class="NewsList_item__9_fzC">
+              <a class="NewsList_link__1Mvta" href="https://www.newsis.com/view/NISX20250704_0003238971" target="_blank" rel="noreferrer noopener">
+                <span class="NewsList_inner__lfka_">
+                  <strong class="NewsList_title__XdSpT">무신사, 올해 상반기 오프라인 판매액 1000억원 돌파</strong>
+                  <p class="NewsList_text__s2MDP">무신사가 2025년 상반기 오프라인 매출 1000억 원을 넘어섰다고 밝혔다.</p>
+                  <span class="NewsList_information__3Uupv">
+                    <cite class="NewsList_description__QiY9C">뉴시스</cite>
+                    <time class="NewsList_description__QiY9C">2025.07.04</time>
+                  </span>
+                </span>
+                <span class="NewsList_thumb__E4kyu">
+                  <img class="img" src="https://static.ustockplus.com/admin/2023-12/694577d0-9b8c-40f3-94fa-8ae34891c1e4.png" width="103" height="70" alt="기업소식 이미지">
+                </span>
+              </a>
+            </li>
+      
+            <li class="NewsList_item__9_fzC">
+              <a class="NewsList_link__1Mvta" href="https://www.dailian.co.kr/news/view/1518652/?sc=Naver" target="_blank" rel="noreferrer noopener">
+                <span class="NewsList_inner__lfka_">
+                  <strong class="NewsList_title__XdSpT">놀유니버스, 선불 충전 결제 서비스 ‘놀 머니’ 출시한다</strong>
+                  <p class="NewsList_text__s2MDP">놀유니버스가 선불 충전 방식의 결제 서비스 ‘놀 머니’를 새롭게 선보인다.</p>
+                  <span class="NewsList_information__3Uupv">
+                    <cite class="NewsList_description__QiY9C">데일리안</cite>
+                    <time class="NewsList_description__QiY9C">2025.07.04</time>
+                  </span>
+                </span>
+                <span class="NewsList_thumb__E4kyu">
+                  <img class="img" src="https://static.ustockplus.com/admin/2025-05/a7e5b7ed-4b35-4a76-ab0d-1599271e9696.png" width="103" height="70" alt="기업소식 이미지">
+                </span>
+              </a>
+            </li>
+      
+            <li class="NewsList_item__9_fzC">
+              <a class="NewsList_link__1Mvta" href="https://www.edaily.co.kr/News/Read?newsId=01892566642230912&amp;mediaCodeNo=257&amp;OutLnkChk=Y" target="_blank" rel="noreferrer noopener">
+                <span class="NewsList_inner__lfka_">
+                  <strong class="NewsList_title__XdSpT">‘적자의 늪’ 티몬 삼킨 오아시스…‘흑자 신화’ 지켜낼까</strong>
+                  <p class="NewsList_text__s2MDP">티몬을 인수한 오아시스가 흑자 전환에 성공하며 실적 개선에 힘쓰고 있다.</p>
+                  <span class="NewsList_information__3Uupv">
+                    <cite class="NewsList_description__QiY9C">이데일리</cite>
+                    <time class="NewsList_description__QiY9C">2025.07.04</time>
+                  </span>
+                </span>
+                <span class="NewsList_thumb__E4kyu">
+                  <img class="img" src="https://static.ustockplus.com/admin/2023-01/bbb364a1-7dbd-49ea-8f5e-845b91b16967.png" width="103" height="70" alt="기업소식 이미지">
+                </span>
+              </a>
+            </li>
+      
+            <li class="NewsList_item__9_fzC">
+              <a class="NewsList_link__1Mvta" href="https://www.ddaily.co.kr/page/view/2025070215142225919" target="_blank" rel="noreferrer noopener">
+                <span class="NewsList_inner__lfka_">
+                  <strong class="NewsList_title__XdSpT">컬리 CTO, 6개월 만에 사임…기술 조직, 어떻게 변화하나</strong>
+                  <p class="NewsList_text__s2MDP">컬리 CTO가 6개월 만에 사임하면서 기술 조직의 변화가 주목받고 있다.</p>
+                  <span class="NewsList_information__3Uupv">
+                    <cite class="NewsList_description__QiY9C">디지털데일리</cite>
+                    <time class="NewsList_description__QiY9C">2025.07.04</time>
+                  </span>
+                </span>
+                <span class="NewsList_thumb__E4kyu">
+                  <img class="img" src="https://static.ustockplus.com/logo/stock/408480.png" width="103" height="70" alt="기업소식 이미지">
+                </span>
+              </a>
+            </li>
+      
+            <li class="NewsList_item__9_fzC">
+              <a class="NewsList_link__1Mvta" href="https://biz.heraldcorp.com/article/10524388?ref=naver" target="_blank" rel="noreferrer noopener">
+                <span class="NewsList_inner__lfka_">
+                  <strong class="NewsList_title__XdSpT">바디프랜드, 상반기 B2G 실적 증가세…1년 만에 22.3%↑</strong>
+                  <p class="NewsList_text__s2MDP">바디프랜드가 상반기 B2G 매출에서 22.3%의 성장세를 기록했다.</p>
+                  <span class="NewsList_information__3Uupv">
+                    <cite class="NewsList_description__QiY9C">헤럴드경제</cite>
+                    <time class="NewsList_description__QiY9C">2025.07.04</time>
+                  </span>
+                </span>
+                <span class="NewsList_thumb__E4kyu">
+                  <img class="img" src="https://static.ustockplus.com/admin/2023-02/fdb88baf-1a77-4873-a01e-3a87a7c6d842.png" width="103" height="70" alt="기업소식 이미지">
+                </span>
+              </a>
+            </li>
+      
+          </ul>
+        </div>
+      </section>
+      
+      
+      
+
+    <footer class="page-footer">
+        <div class="box"></div>
+        <section class="index-footer">
+            <div class="footer-wrapper">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_footer_desktop.svg" alt="금융위원회 혁신금융서비스 지정기업 로고">
+                <section class="pc-only-copyright-wrapper">
+                    <div>
+                        <span class="cs-title">서울거래 비상장</span>
+                        <p class="psx-info"> <br> 주소: 서울특별시 영등포구 여의대로 8  <br></p>
+                        <p class="copyright">© 2020 PSX Inc. All rights reserved.</p>
+                    </div>
+                </section> 
+
+    </footer>
+    <style>
+/* 상태 탭 스타일 */
+.ipo-status-tabs {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  margin-bottom: 20px;
+  padding-left: 10px; /* 왼쪽 여백 추가 */
+}
+
+.ipo-status-tabs .status {
+  padding: 0.5rem 1rem;
+  margin: 0 5px;
+  border: 1px solid #eb3640;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #eb3640;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ipo-status-tabs .status:hover {
+  background-color: #eb3640;
+  color: #ffffff;
+}
+
+.ipo-status-tabs .status.active {
+  background-color: #eb3640;
+  color: #ffffff;
+  border-color: #eb3640;
+}
+/* 슬라이더 스타일 */
+.ipo-slider-wrapper {
+  width: 100%;
+  max-width: 600px; /* 슬라이더의 최대 너비를 제한 */
+  margin: 0 auto;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 슬라이드가 전체 너비를 차지하도록 설정 */
+}
+
+/* 종목 카드 스타일 */
+.stock-competition-rate-card {
+  border: 0px solid #e0e0e0; /* 연한 회색 테두리 */
+  padding: 10px;
+  border-radius: 50px; /* 부드러운 모서리 */
+  text-align: center;
+  background-color: #ffffff; /* 흰색 배경 */
+  width: 100%; /* 반응형 너비 */
+  max-width: 340px; /* 카드의 최대 너비 */
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 항목 간 간격 (조금 늘림) */
+}
+
+
+/* 카드 내부 이미지 */
+.card-body img {
+  max-width: 80px;
+  height: 80px;
+  border-radius: 50%; /* 원형 이미지 */
+  border: 3px solid #f0f0f0; /* 얇은 테두리 */
+  margin-bottom: 1px; /* 이미지 아래 간격 */
+}
+
+/* 종목명 스타일 */
+.card-body .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222222; /* 진한 텍스트 */
+  margin-bottom: 12px; /* 간격 추가 */
+}
+
+/* 상태 스타일 (버튼 스타일과 일치) */
+.card-body .status {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #eb3640;
+    border: 1px solid #cb7b7f;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card-body .status:hover {
+  background-color: #eb3640; /* hover 시 배경색 변경 */
+  color: #ffffff; /* hover 시 텍스트 색상 변경 */
+}
+
+/* 날짜 스타일 */
+.card-body .date {
+  font-size: 14px;
+  color: #555555; /* 중간 회색 텍스트 */
+  margin-bottom: 8px; /* 간격 추가 */
+}
+
+/* 가격 스타일 */
+.card-body .price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #eb3640; /* 강조된 빨간색 */
+  margin-bottom: 12px; /* 간격 추가 */
+}
+
+/* 경쟁률 스타일 */
+.card-body .competition {
+  font-size: 14px;
+  color: #555555; /* 중간 회색 텍스트 */
+  margin-bottom: 8px; /* 간격 추가 */
+}
+
+/* 반응형 카드 레이아웃 */
+@media (max-width: 768px) {
+  .stock-competition-rate-card {
+    max-width: 100%; /* 모바일에서 카드가 화면 너비에 맞게 확장 */
+  }
+}
+/* Swiper 버튼 크기 재정의 */
+:root {
+  --swiper-navigation-size: 20px; /* Swiper 버튼 크기를 20px로 설정 */
+}
+
+/* Swiper 버튼 기본 스타일 */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 20px !important; /* 버튼 너비 */
+  height: 20px !important; /* 버튼 높이 */
+  color: #cccccc; /* 버튼 색상 */
+  padding: 3px; /* 버튼 내부 여백 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* 버튼 hover 효과 */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #e61c1c; /* hover 시 아이콘 색상 변경 */
+}
+
+/* 버튼 위치 조정 */
+.swiper-button-next {
+  right: 10px; /* 오른쪽 여백 */
+}
+
+.swiper-button-prev {
+  left: 10px; /* 왼쪽 여백 */
+}
+.no-ipo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  margin: 30px auto;
+  max-width: 90%;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.no-ipo-card .icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.no-ipo-card .message {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 슬라이드 데이터
+    const ipoData = [
+      
+      {
+        status: "상장예정",
+        date: "07.15 예정",
+        name: "아우토크립트",
+        logo: "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5891%2F2025%2F05%2F15%2F0000003628_001_20250515092816649.png&type=a340",
+        price: "18,700 ~ 22,000원",
+        competition: "미정",
+      },
+
+      {
+        status: "청약예정",
+        date: "07.14 ~ 07.15 예정",
+        name: "도우인시스",
+        logo: "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fd2u3dcdbebyaiu.cloudfront.net%2Fimg%2FcompanyPage_kr%2Flogo_56479.jpg&type=a340",
+        price: "29,000 ~ 32,000원",
+        competition: "미정",
+      },
+      
+      {
+        status: "상장예정",
+        date: "07.07 예정",
+        name: "싸이닉솔루션",
+        logo: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA2MDRfNDcg%2FMDAxNzQ5MDE2NzQxNTc5.V8hr2nXjKxaB1VYghelyH0XJpOGmc9QgUw7oQ09KeWAg.GZxbt2tqukE6Uzs3xtoK01VFUPDJq7yMLyEmIzkhxecg.JPEG%2F%25BD%25CE%25C0%25CC%25B4%25D0%25BC%25D6%25B7%25E7%25BC%25C7_%25284%2529.jpg&type=a340",
+        price: "4,700원",
+        competition: "2,148.34 : 1",
+      },
+      
+      
+    ];
+
+    let swiper = null;
+
+    function renderSlides(data) {
+      const swiperWrapper = document.querySelector(".swiper-wrapper");
+      const sliderWrapper = document.querySelector(".ipo-slider-wrapper");
+      const navNext = document.querySelector(".swiper-button-next");
+      const navPrev = document.querySelector(".swiper-button-prev");
+
+      sliderWrapper.style.display = "block";
+      navNext.style.display = "block";
+      navPrev.style.display = "block";
+
+      swiperWrapper.innerHTML = data.map(item => `
+        <div class="swiper-slide">
+          <div class="stock-competition-rate-card">
+            <div class="card-body">
+              <div class="row"><span class="name">${item.name}</span></div>
+              <div class="row"><img src="${item.logo}" alt="${item.name} 로고"></div>
+              <div class="row"><span class="date">${item.date}</span></div>
+              <div class="row"><span class="price">공모가: ${item.price}</span></div>
+              <div class="row"><span class="competition">기관경쟁률: ${item.competition}</span></div>
+              <div class="row"><span class="status">${item.status}</span></div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      if (swiper) {
+        swiper.update();
+      } else {
+        swiper = new Swiper(".swiper", {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          loop: true,
+        });
+      }
+    }
+
+    function filterSlides(status) {
+      const swiperWrapper = document.querySelector(".swiper-wrapper");
+      const sliderWrapper = document.querySelector(".ipo-slider-wrapper");
+      const navNext = document.querySelector(".swiper-button-next");
+      const navPrev = document.querySelector(".swiper-button-prev");
+
+      const filteredData = ipoData.filter((item) => item.status === status);
+
+      if (filteredData.length === 0) {
+        // 슬라이더 제거 및 메시지 표시
+        swiperWrapper.innerHTML = `
+          <div class="no-ipo-card">
+            <div class="icon">📭</div>
+            <p class="message">현재 <strong>${status}</strong> 상태의 종목이 없습니다.<br>추후 업데이트를 확인해 주세요!</p>
+          </div>
+        `;
+
+        sliderWrapper.style.display = "none";
+        navNext.style.display = "none";
+        navPrev.style.display = "none";
+
+        if (swiper) {
+          swiper.destroy(true, true);
+          swiper = null;
+        }
+
+        return;
+      }
+
+      renderSlides(filteredData);
+    }
+
+    filterSlides("청약예정");
+
+    const statusTabs = document.querySelectorAll(".ipo-status-tabs .status");
+    statusTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        statusTabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const status = tab.getAttribute("data-status");
+        filterSlides(status);
+      });
+    });
+  });
+
+  // 예수금 불러오기 함수
+  async function loadBalance() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    const res = await fetch('/api/balance', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById('balance').textContent = data.balance.toLocaleString() + '원';
+    } else {
+      console.error('❌ 오류:', data.message);
+    }
+  }
+</script>
+
+  
+        
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보유종목</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="홈 링크">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_seoulex_logo.svg" alt="서울거래 로고" width="154" height="28">
+            </a>
+            <div class="auth-container" id="auth-container">
+                <span id="greeting" class="hidden"style="display: block;">환영합니다, ooo님!</span>
+                <span id="balance">안전하게 로딩 중입니다.</span>
+                <div class="button-container">
+                    <button id="login-btn" style="display: none;">로그인</button>
+                    <button id="signup-btn" style="display: none;">회원가입</button>
+                    <button id="owned-btn" class="hidden" style="display: block;">보유 종목</button> <!-- 보유 종목 버튼 -->
+                    <button id="logout" class="hidden" style="display: block;">로그아웃</button> <!-- 로그아웃 버튼 -->
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="owned-stocks" class="section">
+            <div id="loading-message" class="hidden">보유 주식을 불러오는 중...</div> <!-- 로딩 메시지 -->
+            <div id="owned-stock-list">
+                <!-- 주식 데이터가 동적으로 추가됩니다. 각 종목은 이곳에 표시됩니다. -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <div class="box"></div>
+        <section class="index-footer">
+            <div class="footer-wrapper">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_footer_desktop.svg" alt="금융위원회 혁신금융서비스 지정기업 로고">
+                <section class="pc-only-copyright-wrapper">
+                    <div>
+                        <span class="cs-title">서울거래 비상장</span>
+                        <p class="psx-info"><br>주소: 서울특별시 영등포구 여의대로 8<br></p>
+                        <p class="copyright">
+                            © 2020 PSX Inc. All rights reserved.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section> 
+    </footer>
+
+    <script src="../js/scripts.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            console.log('JWT 토큰:', token);
+
+            if (!token) {
+                alert('로그인이 필요합니다.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // renderStockList 함수 호출
+        });
+    </script>
+</body>
+</html>

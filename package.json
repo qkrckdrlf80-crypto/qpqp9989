@@ -1,0 +1,33 @@
+{
+  "name": "stock-page-project",
+  "version": "1.0.0",
+  "description": "A stock page project using HTML, CSS, JavaScript, and MongoDB.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.1",
+    "puppeteer": "^24.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "keywords": [
+    "stock",
+    "web",
+    "mongodb",
+    "express"
+  ],
+  "author": "Your Name",
+  "license": "ISC"
+}

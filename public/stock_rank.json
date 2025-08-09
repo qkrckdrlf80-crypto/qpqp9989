@@ -1,0 +1,92 @@
+[
+  {
+    "rank": 1,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-01/2d2f17bd-097c-4011-931f-6c73c7b7b694.png&w=48&q=75",
+    "name": "두나무",
+    "avgPrice": "143,000원",
+    "change": "-2.05%",
+    "orders": "미제공",
+    "category": "일반"
+  },
+  {
+    "rank": 2,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/logo/stock/341650.png&w=48&q=75",
+    "name": "빗썸",
+    "avgPrice": "94,000원",
+    "change": "-1.57%",
+    "orders": "미제공",
+    "category": "일반"
+  },
+  {
+    "rank": 3,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/logo/stock/279570.png&w=48&q=75",
+    "name": "케이뱅크",
+    "avgPrice": "6,950원",
+    "change": "+3.73%",
+    "orders": "미제공",
+    "category": "일반"
+  },
+  {
+    "rank": 4,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-06/3cb68b08-1b66-4714-9c70-39b8a735a120.png&w=48&q=75",
+    "name": "지아이티",
+    "avgPrice": "미제공",
+    "change": "미제공",
+    "orders": "미제공",
+    "category": "전문"
+  },
+  {
+    "rank": 5,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/logo/company/2923.png&w=48&q=75",
+    "name": "노르마",
+    "avgPrice": "미제공",
+    "change": "미제공",
+    "orders": "미제공",
+    "category": "전문"
+  },
+  {
+    "rank": 6,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/logo/stock/350920.png&w=48&q=75",
+    "name": "야놀자",
+    "avgPrice": "36,600원",
+    "change": "+1.95%",
+    "orders": "미제공",
+    "category": "일반"
+  },
+  {
+    "rank": 7,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-11/73d37fa5-cb6a-4ad9-b984-ef79bc79e7a8.png&w=48&q=75",
+    "name": "지엔티파마",
+    "avgPrice": "8,100원",
+    "change": "+0.62%",
+    "orders": "미제공",
+    "category": "일반"
+  },
+  {
+    "rank": 8,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-01/d11cb679-8589-4942-951e-8625a86410cf.png&w=48&q=75",
+    "name": "울트라브이",
+    "avgPrice": "미제공",
+    "change": "미제공",
+    "orders": "미제공",
+    "category": "전문"
+  },
+  {
+    "rank": 9,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-02/b14b6185-e4a5-4857-a639-1974c74d22e1.png&w=48&q=75",
+    "name": "알바이오",
+    "avgPrice": "미제공",
+    "change": "미제공",
+    "orders": "미제공",
+    "category": "전문"
+  },
+  {
+    "rank": 10,
+    "logo": "https://www.ustockplus.com/_next/image?url=https://static.ustockplus.com/admin/2023-01/0686ffea-0f89-4f83-8bbc-b01e52ec04c7.png&w=48&q=75",
+    "name": "그래핀스퀘어",
+    "avgPrice": "미제공",
+    "change": "미제공",
+    "orders": "미제공",
+    "category": "전문"
+  }
+]

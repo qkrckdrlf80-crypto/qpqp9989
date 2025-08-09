@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts 사용 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>/* ✅ 기본 스타일 */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ✅ 헤더 스타일 */
+        header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+        
+        /* 로그인 & 회원가입 스타일 */
+        .auth-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: right;
+        }
+        
+        .auth-container button {
+        width: auto;
+        padding: 0.5rem 1rem;
+        background-color: #ffffff;
+        color: #eb3640;
+        border: 1px solid #eb3640;
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        
+        .auth-container button:hover {
+            background-color: #eb3640;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ✅ 메인 섹션 스타일 */
+        main {
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="password"],
+        #custom-brokerage-wrapper input[type="text"] {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="password"]:focus,
+        #custom-brokerage-wrapper input[type="text"]:focus {
+            border-color: #eb3640;
+        }
+        
+        /* ✅ select 박스도 input과 동일한 스타일 */
+        select {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            outline: none;
+            background-color: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg fill='%23666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.8rem center;
+            background-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        select:focus {
+            border-color: #eb3640;
+        }
+        
+        /* ✅ 직접 입력 input wrapper 정리 */
+        #custom-brokerage-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: -0.5rem; /* label 정렬 보정 */
+        }
+        
+        /* ✅ 회원가입 버튼 */
+        button[type="submit"] {
+            background-color: #eb3640;
+            color: white;
+            padding: 0.8rem 1.3rem;
+            font-size: 1rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #c72d36;
+        }
+        
+        /* 로그인 관련 링크 스타일 */
+        .login-links {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #aba5a5;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .login-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .login-links a::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #eb3640;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .login-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        /* ✅ 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 2.0rem;
+            background-color: #ededed;
+            color: #8b8b8b;
+            font-size: 0.7rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ✅ 반응형 스타일 */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem 1rem;
+            }
+        
+            h1 {
+                font-size: 1.3rem;
+            }
+        
+            label {
+                font-size: 0.9rem;
+            }
+        
+            input[type="text"],
+            input[type="tel"],
+            input[type="password"],
+            #custom-brokerage-wrapper input[type="text"],
+            select {
+                font-size: 0.9rem;
+            }
+        
+            button[type="submit"] {
+                font-size: 1rem;
+                padding: 0.8rem 1.3rem;
+            }
+        }
+        select:invalid {
+  color: #aaa; /* placeholder처럼 회색 */
+}
+
+select option {
+  color: #333; /* 일반 옵션은 기본 텍스트 색상 */
+}        
+        </style>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="홈 링크">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_seoulex_logo.svg" alt="서울거래 로고" width="154" height="28">
+            </a>
+            <div class="auth-container" id="auth-container">
+                <span id="greeting" class="hidden"style="display: block;">환영합니다, ooo님!</span>
+                <span id="balance">안전하게 로딩 중입니다.</span>
+                <div class="button-container">
+                    <button id="login-btn" style="display: none;">로그인</button>
+                    <button id="signup-btn" style="display: none;">회원가입</button>
+                    <button id="owned-btn" class="hidden" style="display: block;">보유 종목</button> <!-- 보유 종목 버튼 -->
+                    <button id="logout" class="hidden" style="display: block;">로그아웃</button> <!-- 로그아웃 버튼 -->
+                </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>회원가입</h1>
+        <form id="signup-form">
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">연락처:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="username">아이디:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="brokerage">증권사 <span style="color: #eb3640;">(선택)</span>:</label>
+            <select id="brokerage" name="brokerage" required>
+                <option value="" disabled selected>증권사를 선택하세요</option>
+                <option value="미래에셋증권">미래에셋증권</option>
+                <option value="삼성증권">삼성증권</option>
+                <option value="NH투자증권">NH투자증권</option>
+                <option value="KB증권">KB증권</option>
+                <option value="한국투자증권">한국투자증권</option>
+                <option value="신한투자증권">신한투자증권</option>
+                <option value="하나증권">하나증권</option>
+                <option value="키움증권">키움증권</option>
+                <option value="대신증권">대신증권</option>
+                <option value="유안타증권">유안타증권</option>
+                <option value="기타">기타 (직접 입력)</option>
+            </select>
+            
+            <!-- 직접 입력 input 영역 -->
+            <div id="custom-brokerage-wrapper" style="display: none;">
+                <label for="customBrokerage">직접 입력:</label>
+                <input type="text" id="customBrokerage" name="customBrokerage" placeholder="증권사 이름을 입력하세요">
+            </div>
+            <script>
+                const brokerageSelect = document.getElementById('brokerage');
+                const customInputWrapper = document.getElementById('custom-brokerage-wrapper');
+            
+                brokerageSelect.addEventListener('change', () => {
+                    if (brokerageSelect.value === '기타') {
+                        customInputWrapper.style.display = 'flex';
+                    } else {
+                        customInputWrapper.style.display = 'none';
+                    }
+                });
+            </script>
+            
+            
+            <label for="accountNumber">증권 계좌 번호:</label>
+            <input type="text" id="accountNumber" name="accountNumber" required>
+
+            <button type="submit">회원가입</button>
+        </form>
+
+        <p class="login-links">
+            <strong>이미 아이디가 있으신가요? </strong>
+        </p>
+        <div class="login-links">
+            <a href="/login.html" class="link">로그인</a> | 
+            <a href="/find-id.html" class="link">아이디 찾기</a> | 
+            <a href="/find-password.html" class="link">비밀번호 찾기</a>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="box"></div>
+        <section class="index-footer">
+            <div class="footer-wrapper">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_footer_desktop.svg" alt="금융위원회 혁신금융서비스 지정기업 로고">
+                <section class="pc-only-copyright-wrapper">
+                    <div>
+                        <span class="cs-title">서울거래 비상장</span>
+                        <p class="psx-info"><br> 주소: 서울특별시 영등포구 여의대로 8 <br></p>
+                        <p class="copyright">
+                            © 2020 PSX Inc. All rights reserved.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async function (event) {
+            event.preventDefault(); // 기본 제출 방지
+        
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                brokerage: document.getElementById('brokerage').value,
+                accountNumber: document.getElementById('accountNumber').value
+            };
+        
+            console.log('전송할 데이터:', formData); // 콘솔 확인용
+        
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+        
+                const result = await response.json();
+                console.log('서버 응답:', result);
+        
+                if (response.ok) {
+                    alert('회원가입 성공!');
+                    window.location.href = '/login.html'; // 로그인 페이지로 이동
+                } else {
+                    alert(`회원가입 실패: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('회원가입 요청 오류:', error);
+                alert('회원가입 중 오류가 발생했습니다.');
+            }
+        });
+        
+        
+        
+            </script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+/* ✅ 기본 스타일 */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+.ipo-ranking h2 {
+    
+    font-size: 1.17rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    
+    color: #333;
+  }.ranking-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding-left: 1.30rem;
+    color: #333;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  
+  .ranking-title time {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #666;
+  }
+/* ✅ 예수금 표시 스타일 */
+#balance {
+    font-size: 13px; /* 글자 크기 */
+    font-weight: bold; /* 글자 두께 */
+    color: #000000; /* 기본 텍스트 색상 */
+    margin-top: 10px; /* 위쪽 여백 */
+    text-align: center; /* 가운데 정렬 */
+    font-family: 'Arial', sans-serif; /* 폰트 패밀리 */
+}
+
+/* 금액 숫자 부분 스타일 */
+#balance .amount {
+    color: #da3d45; /* 빨간색 */
+    font-weight: bold; /* 숫자 강조 */
+}
+#balance.loading {
+    color: #888888;      /* 연한 회색 */
+    opacity: 0.7;        /* 투명도 조절 */
+    font-style: italic;  /* 이탤릭체로 살짝 부드럽게 */
+  }
+  
+/* ✅ 헤더 스타일 */
+header {
+    background-color: #ffffff;
+    color: #333;
+    padding: 1rem 2rem; /* 좌우 여백 조정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 헤더 내부 컨테이너 */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    max-height: 40px;
+    width: auto;
+}
+
+/* 순위 테이블 로고 스타일 */
+.ranking-stock-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+/* 보유 종목 로고 스타일 */
+.owned-stock-logo {
+    width: 60px;  /* 더 큰 로고 크기 */
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+}
+
+/* 네비게이션 링크 */
+.nav-list li a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #eb3640;
+}
+
+/* ✅ 로그인 & 회원가입 스타일 */
+.auth-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: right;
+}
+
+/* 로그인 & 회원가입 버튼 */
+.auth-container button {
+    background-color: #ffffff;
+    color: #eb3640;
+    border: 1px solid #eb3640;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container button:hover {
+    background-color: #eb3640;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ✅ 보유 종목 목록 스타일 */
+#owned-stock-list {
+    display: grid; /* Grid 레이아웃 적용 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 열 설정 */
+    gap: 20px; /* 상하 및 좌우 간격 */
+    justify-content: center; /* 가운데 정렬 */
+    padding: 0;
+    margin: 0;
+}
+
+/* ✅ 종목 카드 스타일 */
+.stock-item {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 1.3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* 카드 hover 시 효과 */
+.stock-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* 보유 종목 로고 이미지 스타일 수정 */
+#owned-stocks .stock-item .owned-stock-logo img {
+    width: 60px; /* 로고 크기 조정 */
+    height: 60px; /* 로고 크기 조정 */
+    object-fit: contain; /* 로고가 비율에 맞게 잘리거나 왜곡되지 않게 설정 */
+    object-position: center; /* 로고를 중앙 정렬 */
+    border-radius: 50%; /* 로고를 동그랗게 */
+    overflow: hidden; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+    border: 2px solid #ddd; /* 로고에 테두리 추가 */
+}
+
+/* ✅ 종목 정보 스타일 */
+.stock-details {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.stock-details span {
+    display: block;
+    font-size: 1rem;
+    color: #555; /* 기존 컬러 유지 */
+    margin-bottom: 0.3rem;
+}
+
+/* 종목 이름과 티커 강조 스타일 */
+.stock-details span strong {
+    font-size: 1.0rem;
+    color: #222; /* 기존 컬러 유지 */
+    font-weight: bold;
+}
+
+/* ✅ 버튼 스타일 */
+.stock-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.stock-actions button {
+    background-color: #eb3640;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 버튼 hover 시 효과 */
+.stock-actions button:hover {
+    background-color: #c72d36; /* 기존 색상 유지 */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+
+/* 기본 스타일 */
+.auth-container {
+    display: flex;
+    flex-direction: column;  /* 기본적으로 세로로 정렬 */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;  /* 각 요소 간의 간격 */
+}
+
+/* 버튼을 포함한 div */
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 모바일에서 버튼들이 한 줄로 배치되도록 */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column; /* 모바일에서도 세로로 배치 */
+        gap: 7px;
+        align-items: center; /* 가운데 정렬 */
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between; /* 버튼들을 가로로 한 줄로 배치 */
+        width: 100%;  /* 버튼들이 화면 전체에 가득 차도록 설정 */
+        gap: 10px;    /* 버튼들 간의 간격 */
+    }
+
+    /* 버튼 크기 조정 */
+    .auth-container button {
+        width: 45%;  /* 버튼 너비를 45%로 설정하여 두 버튼이 한 줄에 배치 */
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+
+    /* 로그인 후 버튼들 표시 */
+    .auth-container.logged-in #login-btn,
+    .auth-container.logged-in #signup-btn {
+        display: none;
+    }
+
+    /* 로그인 후 버튼들 표시 */
+    .auth-container.logged-in #logout,
+    .auth-container.logged-in #owned-btn {
+        display: block;
+    }
+
+
+    /* 보유 종목 한 줄 표시 */
+    #owned-stocks {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 📌 종목 순위 테이블 스타일 */
+#rankings-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #ffffff00;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 📌 헤더 스타일 */
+.ranking-header {
+    display: grid;
+    grid-template-columns: 10% 50% 20% 20%;
+    padding: 10px;
+    background: #f4f4f400;
+    font-weight: bold;
+    border-bottom: 2px solid #e9e9e9;
+    text-align: center;
+}
+
+/* 📌 "순위" 헤더는 숨김 */
+.ranking-header span:first-child {
+    visibility: hidden; /* 텍스트만 숨김, 공간 유지 */
+}
+
+/* 📌 종목명 헤더만 왼쪽 정렬 */
+.ranking-header span:nth-child(2) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* 📌 각 종목 스타일 */
+.ranking-item {
+    display: grid;
+    grid-template-columns: 10% 50% 20% 20%;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ffffff;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+/* 📌 종목명 및 로고 스타일 수정 */
+.ranking-item .stock-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;  /* 로고와 텍스트 간격 */
+    justify-content: flex-start;  /* 왼쪽 정렬 */
+}
+
+.ranking-item .stock-info img {
+    width: 40px;  /* 로고 크기 조정 */
+    height: 40px; /* 로고 크기 조정 */
+    object-fit: contain;
+    border-radius: 50%;  /* 로고 둥글게 */
+}
+
+/* 📌 종목명 텍스트 스타일 */
+.ranking-item .stock-info .stock-name {
+    font-size: 1rem;  /* 텍스트 크기 */
+    font-weight: 500;
+    color: #333;
+}
+
+/* 📌 가격(체결평균가)과 등락률 스타일 */
+.price-up {
+    color: red !important;
+    font-weight: bold;
+}
+
+.price-down {
+    color: #0080ff !important;
+    font-weight: bold;
+}
+
+/* 📌 종목 hover 시 배경 색상 */
+.ranking-item:hover {
+    background: #fafafa;
+}
+
+/* 📌 모바일 최적화 */
+@media (max-width: 600px) {
+    .ranking-header, .ranking-item {
+        grid-template-columns: 12% 48% 20% 20%;
+        font-size: 14px;
+    }
+}
+
+/* 종목 순위 제목 크기 줄이기 */
+#rankings-table-title {
+    font-size: 16px; /* 기존 h1보다 작은 크기 */
+    font-weight: bold; /* 가독성을 위해 볼드 유지 */
+    text-align: left;
+    margin-bottom: 10px;
+}
+/* ipo 캘린더 */
+.ipo-calendar {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .view-all {
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-decoration: none;
+  }
+
+  .ipo-status-tabs {
+    display: flex;
+    margin: 16px 0;
+    gap: 2px;
+  }
+
+  .status {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .status.active {
+    background-color: #cccccc;
+    color: white;
+    border-color: #cccccc;
+  }
+
+  .ipo-slider-wrapper {
+    position: relative;
+  }
+
+  .ipo-slider {
+    display: none; /* 기본은 숨김 */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .ipo-slider.active {
+    display: flex; /* 활성화된 슬라이더만 보임 */
+  }
+
+  .ipo-slide {
+    scroll-snap-align: start;
+    min-width: 190px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 30px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+  .ipo-slide.empty {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #999;
+  }
+
+  .ipo-slide img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 0px;
+  }
+
+  .ipo-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ipo-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ipo-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+  
+
+  .ipo-info .name {
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+
+  .price-range {
+    font-size: 0.8rem;
+    color: #444;
+  }
+ 
+/* 모바일에서 로그인/로그아웃 버튼, 보유 종목 버튼 보이기 */
+@media screen and (max-width: 767px) {
+    .auth-container button {
+        display: inline-block;  /* 모바일에서 버튼 보이기 */
+    }
+
+    .auth-container.logged-in #login-btn,
+    .auth-container.logged-in #signup-btn {
+        display: none; /* 로그인 후 로그인 및 회원가입 버튼 숨김 */
+    }
+
+    .auth-container.logged-in #logout,
+    .auth-container.logged-in #owned-btn {
+        display: inline-block; /* 로그인 후 로그아웃 버튼과 보유 종목 버튼 보이기 */
+    }
+}
+.ipo-news {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    max-width: 800px;
+    margin: -20px auto;
+  }
+  
+  .ipo-news-title {
+    
+    font-size: 1.17rem;
+    font-weight: 700;
+    margin-bottom: 20px; /* 👉 아래 간격 */
+    color: #222;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+.NewsList_article__8cxIW {
+    padding: 0px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .NewsList_article__8cxIW ul.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .NewsList_item__9_fzC {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .NewsList_item__9_fzC:last-child {
+    border-bottom: none;
+  }
+  
+  .NewsList_item__9_fzC:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .NewsList_link__1Mvta {
+    display: flex;
+    width: 100%;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .NewsList_inner__lfka_ {
+    flex: 1;
+    padding-right: 15px;
+  }
+  
+  .NewsList_title__XdSpT {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  
+  .NewsList_text__s2MDP {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  
+  .NewsList_information__3Uupv {
+    font-size: 0.8rem;
+    color: #999;
+  }
+  
+  .NewsList_thumb__E4kyu {
+    width: 103px;
+    height: 70px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .NewsList_thumb__E4kyu img.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+/* 모바일에서 보유 종목 버튼 스타일 */
+@media (max-width: 768px) {
+    .auth-container button {
+        width: auto;  /* 버튼 크기 자동 조정 */
+        padding: 0.5rem 1rem;  /* 버튼 크기 조정 */
+        background-color: #ffffff;
+    color: #eb3640;
+    border: 1px solid #eb3640;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    }
+
+    #owned-btn {
+        display: inline-block;  /* 모바일에서도 보유 종목 버튼이 보이도록 설정 */
+    }
+}
+#loading-message {
+    font-size: 0.9rem;
+    color: #0e0d0d;
+    text-align: center;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+#greeting {
+    font-size: 13px;  /* 글자 크기 */
+    font-weight: bold;  /* 글자 두께 */
+    color: #000000;  /* 글자 색상 */
+    margin-top: 10px;  /* 위쪽 여백 */
+    text-align: center;  /* 가운데 정렬 */
+    font-family: 'Arial', sans-serif;  /* 폰트 패밀리 */
+}
+
+#greeting.hidden {
+    display: none;  /* hidden 클래스를 가진 경우 숨기기 */
+}
+
+/* 보유 종목이 없을 때 메시지 스타일 */
+.no-stocks-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #0e0d0d;
+    margin-top: 1rem;
+}
+
+/* ✅ 푸터 스타일 */
+footer {
+    text-align: center;
+    padding: 2.0rem;
+    background-color: #ededed;
+    color: #8b8b8b;
+    font-size: 0.7rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}

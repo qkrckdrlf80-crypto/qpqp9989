@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts 사용 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        /* ✅ 기본 스타일 */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ✅ 헤더 스타일 */
+        header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* 헤더 내부 컨테이너 */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        /* 로고 스타일 */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            max-height: 40px;
+            width: auto;
+        }
+        
+        /* 로그인 & 회원가입 스타일 */
+        .auth-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: right;
+        }
+        
+        /* 로그인 & 회원가입 버튼 */
+        .auth-container button {
+            background-color: #ffffff;
+            color: #eb3640;
+            border: 1px solid #eb3640;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-container button:hover {
+            background-color: #eb3640;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ✅ 메인 섹션 스타일 */
+        main {
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input[type="text"], input[type="password"] {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            outline: none;
+        }
+        
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #eb3640;
+        }
+        
+        button[type="submit"] {
+            background-color: #eb3640;
+            color: white;
+            padding: 0.8rem 1.3rem;
+            font-size: 1rem;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #c72d36;
+        }
+        
+        /* 로그인 관련 링크 스타일 */
+        .signup-links {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #aba5a5;
+            display: flex;
+            justify-content: center; /* 가로로 배치 */
+            gap: 20px; /* 링크 간 간격 */
+        }
+
+        .signup-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 5px; /* 밑줄과 텍스트 사이 여백 */
+        }
+
+        .signup-links a::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #eb3640;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .signup-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* 모바일 스타일 */
+        @media (max-width: 768px) {
+            .signup-links {
+                flex-direction: row; /* 모바일에서도 가로로 배치 */
+                justify-content: center; /* 중앙 정렬 */
+            }
+
+            .signup-links a {
+                font-size: 0.9rem; /* 모바일에서 글씨 크기 조정 */
+            }
+        }
+
+        /* ✅ 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 2.0rem;
+            background-color: #ededed;
+            color: #8b8b8b;
+            font-size: 0.7rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+<header>
+    <div class="header-container">
+        <a href="/" class="logo" aria-label="홈 링크">
+            <img src="https://psx-static.s3.amazonaws.com/static/images/ic_seoulex_logo.svg" alt="서울거래 로고" width="154" height="28">
+        </a>
+        <div class="auth-container" id="auth-container">
+            <span id="greeting" class="hidden"style="display: block;">환영합니다, ooo님!</span>
+            <span id="balance">안전하게 로딩 중입니다.</span>
+            <div class="button-container">
+                <button id="login-btn" style="display: none;">로그인</button>
+                <button id="signup-btn" style="display: none;">회원가입</button>
+                <button id="owned-btn" class="hidden" style="display: block;">보유 종목</button> <!-- 보유 종목 버튼 -->
+                <button id="logout" class="hidden" style="display: block;">로그아웃</button> <!-- 로그아웃 버튼 -->
+            </div>
+    </div>
+</header>
+    <main>
+        <h1>로그인</h1>
+        <form id="login-form">
+            <label for="username">아이디:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">로그인</button>
+        </form>
+
+        <p class="signup-links">
+            <strong>회원이 아니신가요? </strong>
+        </p>
+        <div class="signup-links">
+            <a href="/signup.html" class="link">회원가입</a> | 
+            <a href="/find-id.html" class="link">아이디 찾기</a> | 
+            <a href="/find-password.html" class="link">비밀번호 찾기</a>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="box"></div>
+        <section class="index-footer">
+            <div class="footer-wrapper">
+                <img src="https://psx-static.s3.amazonaws.com/static/images/ic_footer_desktop.svg" alt="금융위원회 혁신금융서비스 지정기업 로고">
+                <section class="pc-only-copyright-wrapper">
+                    <div>
+                        <span class="cs-title">서울거래 비상장</span>
+                        <p class="psx-info"><br> 주소: 서울특별시 영등포구 여의대로 8 <br></p>
+                        <p class="copyright">
+                            © 2020 PSX Inc. All rights reserved.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }) // ✅ username으로 변경
+        });
+
+        const data = await response.json();
+        if (response.ok && data.token) {
+            localStorage.setItem('token', data.token);
+            alert('로그인 성공!');
+            window.location.href = 'index.html';
+        } else {
+            alert(`로그인 실패: ${data.message}`);
+        }
+    } catch (error) {
+        console.error('로그인 요청 실패:', error);
+        alert('로그인 요청 중 오류가 발생했습니다.');
+    }
+});
+    </script>
+</body>
+</html>
